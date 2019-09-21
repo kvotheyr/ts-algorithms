@@ -1,2 +1,2 @@
 # ts-algorithms
-Typescript + Algorithms = :3
+Typescript + Algorithms = :heart:
