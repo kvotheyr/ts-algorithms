@@ -1,22 +1,20 @@
+/**
+ * Given two strings, the function determines if they are anagrams
+ * @param input1 - first string
+ * @param input2 - second string
+ */
 export function areAnagram(input1: string, input2: string): boolean {
-    const map = new Map();
+    const charMap = new Map();
 
-    for(let i=0; i<input1.length; i++){
-        if(map.get(input2.charAt(i))) {
-            map.set(input1.charAt(i), map.get(input2.charAt(i)) + 1);
-        }
-        else {
-            map.set(input1.charAt(i), 1);
-        }
+    for(const char of input1.split('')){
+        charMap.set(char, charMap.get(char)? charMap.get(char) + 1: 1);
     }
 
-    for(let i=0; i<input2.length; i++){
-        if(map.get(input2.charAt(i))) {
-            map.set(input2.charAt(i), map.get(input2.charAt(i)) - 1);
-        }
-        else {
+    for(const char of input2.split('')){
+        if(!charMap.get(char))
             return false;
-        }
+        else
+            charMap.set(char, charMap.get(char) - 1);
     }
     
     return true;
